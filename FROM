@@ -1,0 +1,10 @@
+C implementation of wrapper taken from:
+man 3 system
+man 2 execve
+
+C implementation of simplesmil taken from:
+http://xmlsoft.org/examples/reader1.c
+
+Alternative:
+man 3 getline
+man regcomp

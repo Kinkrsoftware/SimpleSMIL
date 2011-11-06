@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE smil PUBLIC "-//W3C//DTD SMIL 2.0//EN" "http://www.w3.org/2001/SMIL20/SMIL20.dtd">
+<smil xmlns="http://www.w3.org/2001/SMIL20/Language" xmlns:rn="http://features.real.com/2001/SMIL20/Extensions">
+  <head>
+    <layout>
+      <root-layout width="640" height="480" />
+      <region id="content" top="0" left="0" width="640" height="480" />
+    </layout>
+  </head>
+  <body>
+    <seq repeat="indefinite" fillDefault="remove">
+      <img src="/home/skinkie/smil/d3fa03f864349c8891dffc348e2c5b2e.png" alt="Afsluiting sluisbruggen Leidschendam" dur="1s" region="content" fill="remove" erase="whenDone" />
+      <img src="/home/skinkie/smil/c52992a7e28abf2a87a168befc25de5b.png" alt="Afsluiting sluisbruggen Leidschendam" dur="1s" region="content" fill="remove" erase="whenDone" />
+      <img src="/home/skinkie/smil/e89b60a989863dd0d095bc2ca7517823.png" alt="Groot onderhoud Sluizen Leidschendam" dur="1s" region="content" fill="remove" erase="whenDone" />
+    </seq>
+  </body>
+</smil>
