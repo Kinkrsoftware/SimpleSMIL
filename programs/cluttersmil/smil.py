@@ -207,6 +207,7 @@ class body_ref(timing):
         self._region = region
 
         self.actor = None
+        self.clone = []
         self._after = None
         
         timing.__init__(self, begin, dur, end, repeatCount, repeatDur, repeat, fill, restart)
@@ -230,7 +231,9 @@ class body_ref(timing):
         self.clutter()
 
     def clutter_destroy(self):
-        self.actor.hide()
+        self.actor.destroy()
+        for clone in self.clone:
+            clone.destroy()
 
     def clutter(self):
         if self.actor is None:
@@ -245,8 +248,15 @@ class body_ref(timing):
                 self.actor.connect("eos", self._after)
             
             if self._region in region_names:
+                parent = False
                 for region in region_names[self._region]:
-                    region.stage.add_actor(self.actor)
+                    if not parent:
+                        region.stage.add_actor(self.actor)
+                        parent = True
+                    else:
+                        clone = Clutter.Clone.new(self.actor)
+                        region.stage.add_actor(clone)
+                        self.clone.append(clone)
             elif self._region in region_ids:
                 region_ids[self._region].stage.add_actor(self.actor)
             else:
@@ -306,9 +316,9 @@ for region in xml.findall('./head/layout/region'):
     
     if 'regionName' in region.attrib:
         if region.attrib['regionName'] in region_names:
-            region_names.append(smil_region)
+            region_names[region.attrib['regionName']].append(smil_region)
         else:
-            region_names[region.attrib['regionName']] = smil_region
+            region_names[region.attrib['regionName']] = [smil_region]
 
     smil_region.clutter(stage) 
 
